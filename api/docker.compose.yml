@@ -1,0 +1,27 @@
+version: '3.11'
+
+services:
+  toonhavencentral:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - SQLALCHEMY_DATABASE_URL=postgresql://rownokn:rownokn@db:5431/toonhavencentral
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=database_name
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
