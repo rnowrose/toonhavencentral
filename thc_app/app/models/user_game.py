@@ -1,8 +1,7 @@
+from app.const import UserGameStatus
+from app.models.base_model import BaseModel
+from app.models.games import Game
 from django.db.models import *
-
-from api.app.const import UserGameStatus
-from api.app.models.base_model import BaseModel
-from api.app.models.games import Game
 
 
 class UserGame(BaseModel):

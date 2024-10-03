@@ -1,7 +1,6 @@
+from app.const import GameCategory, Status
+from app.models.base_model import BaseModel
 from django.db.models import *
-
-from api.app.const import GameCategory, Status
-from api.app.models.base_model import BaseModel
 
 
 class Game(BaseModel):

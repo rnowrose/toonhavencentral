@@ -1,6 +1,7 @@
-from api.app.models.base_model import BaseModel
-from api.app.models.games import Game
+from app.models.base_model import BaseModel
+from app.models.games import Game
 from django.db.models import *
+
 
 class CollectionRelation(BaseModel):
     id = IntegerField(pk=True)

@@ -1,7 +1,6 @@
+from app.const import WebsiteCategory
+from app.models.base_model import BaseModel
 from django.db.models import *
-
-from api.app.const import WebsiteCategory
-from api.app.models.base_model import BaseModel
 
 
 class GameWebsite(BaseModel):

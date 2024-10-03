@@ -1,6 +1,5 @@
+from app.models.base_model import BaseModel
 from django.db.models import *
-
-from api.app.models.base_model import BaseModel
 
 
 class Keyword(BaseModel):
