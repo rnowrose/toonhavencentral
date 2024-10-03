@@ -1,0 +1,33 @@
+version: '3.11'
+
+services:
+  toonhavencentral:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    environment:
+        - POSTGRES_HOST=localhost
+        - POSTGRES_USER=rownokn
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=rownokn
+    depends_on:
+      - postgres
+    restart: always
+
+  postgres:
+    image: postgres:17.0-bookworm
+    ports:
+      - 5434:5432
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=rownokn
+      - POSTGRES_PASSWORD=InuyashaBleach$1
+      - POSTGRES_DB=rownokn  
+volumes:
+  postgres_data:
