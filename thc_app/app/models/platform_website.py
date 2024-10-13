@@ -4,7 +4,7 @@ from django.db.models import *
 
 
 class PlatformWebsite(BaseModel):
-        trusted = BooleanField()
+    trusted = BooleanField()
     url = CharField()
     category = CharField(max_length=10, choices=PlatformWebsite.Choice)
     

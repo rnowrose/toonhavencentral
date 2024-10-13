@@ -4,7 +4,7 @@ from django.db.models import *
 
 
 class Screenshot(BaseModel):
-        game = ForeignKey('Game', related_name='screenshots')
+    game = ForeignKey('Game', related_name='screenshots')
     height = IntegerField()
     image_id = CharField()
     url = CharField()

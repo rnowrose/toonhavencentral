@@ -9,8 +9,7 @@ class PlatformLogo(BaseModel):
     width = IntegerField()
     alpha_channel = BooleanField()
     animated = BooleanField()
-    
+
     class Meta:
-        db_table = 'platform_logo'
-        table_description = 'game system logo images'    
-    
+        db_table = "platform_logo"
+        table_description = "game system logo images"

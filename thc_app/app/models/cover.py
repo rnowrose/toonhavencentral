@@ -4,7 +4,7 @@ from django.db.models import *
 
 
 class Cover(BaseModel):
-        game = ForeignKey('Game', related_name='games')
+    game = ForeignKey('Game', related_name='games')
     height = IntegerField()
     image_id = CharField()
     url = CharField()

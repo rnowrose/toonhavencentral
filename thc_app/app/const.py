@@ -18,23 +18,24 @@ class GameCategory(Enum):
     PACK = 13
     UPDATE = 14
     Choices = (
-        (MAIN_GAME, 'Main Game'),
-        (DLC_ADDON, 'DLC Addon'),
-        (EXPANSION, 'Expansion'),
-        (BUNDLE, 'Bundle'),
-        (STANDALONE_EXPANSION, 'Standalone Expansion'),
-        (MOD, 'Mod'),
-        (EPISODE, 'Episode'),
-        (SEASON, 'Season'),
-        (REMAKE, 'Remake'),
-        (REMASTER, 'Remaster'),
-        (EXPANDED_GAME, 'Expanded Game'),
-        (PORT, 'Port'),
-        (FORK, 'Fork'),
-        (PACK, 'Pack'),
-        (UPDATE, 'Update'),
+        (MAIN_GAME, "Main Game"),
+        (DLC_ADDON, "DLC Addon"),
+        (EXPANSION, "Expansion"),
+        (BUNDLE, "Bundle"),
+        (STANDALONE_EXPANSION, "Standalone Expansion"),
+        (MOD, "Mod"),
+        (EPISODE, "Episode"),
+        (SEASON, "Season"),
+        (REMAKE, "Remake"),
+        (REMASTER, "Remaster"),
+        (EXPANDED_GAME, "Expanded Game"),
+        (PORT, "Port"),
+        (FORK, "Fork"),
+        (PACK, "Pack"),
+        (UPDATE, "Update"),
     )
     Map = dict(Choices)
+
 
 class Status(Enum):
     RELEASED = 0
@@ -46,16 +47,17 @@ class Status(Enum):
     RUMORED = 7
     DELISTED = 8
     Choices = (
-        (RELEASED, 'Released'),
-        (ALPHA, 'Alpha'),
-        (BETA, 'Beta'),
-        (EARLY_ACCESS, 'Early Access'),
-        (OFFLINE, 'Offline'),
-        (CANCELLED, 'Cancelled'),
-        (RUMORED, 'Rumored'),
-        (DELISTED, 'Delisted'),
+        (RELEASED, "Released"),
+        (ALPHA, "Alpha"),
+        (BETA, "Beta"),
+        (EARLY_ACCESS, "Early Access"),
+        (OFFLINE, "Offline"),
+        (CANCELLED, "Cancelled"),
+        (RUMORED, "Rumored"),
+        (DELISTED, "Delisted"),
     )
     Map = dict(Choices)
+
 
 class WebsiteCategory(Enum):
     OFFICIAL = 1
@@ -76,25 +78,26 @@ class WebsiteCategory(Enum):
     GOG = 17
     DISCORD = 18
     Choices = (
-        (OFFICIAL, 'Official'),
-        (WIKIA, 'Wikia'),
-        (WIKIPEDIA, 'Wikipedia'),
-        (FACEBOOK, 'Facebook'),
-        (TWITTER, 'Twitter'),
-        (TWITCH, 'Twitch'),
-        (INSTAGRAM, 'Instagram'),
-        (YOUTUBE, 'Youtube'),
-        (IPHONE, 'IPhone'),
-        (IPAD, 'IPad'),
-        (ANDROID, 'Android'),
-        (STEAM, 'Steam'),
-        (REDDIT, 'Reddit'),
-        (ITCH, 'Itch'),
-        (EPICGAMES, 'Epic Games'),
-        (GOG, 'GOG'),
-        (DISCORD, 'Discord'),
+        (OFFICIAL, "Official"),
+        (WIKIA, "Wikia"),
+        (WIKIPEDIA, "Wikipedia"),
+        (FACEBOOK, "Facebook"),
+        (TWITTER, "Twitter"),
+        (TWITCH, "Twitch"),
+        (INSTAGRAM, "Instagram"),
+        (YOUTUBE, "Youtube"),
+        (IPHONE, "IPhone"),
+        (IPAD, "IPad"),
+        (ANDROID, "Android"),
+        (STEAM, "Steam"),
+        (REDDIT, "Reddit"),
+        (ITCH, "Itch"),
+        (EPICGAMES, "Epic Games"),
+        (GOG, "GOG"),
+        (DISCORD, "Discord"),
     )
-    
+
+
 class UserGameStatus(Enum):
     NOT_PLAYING = 0
     PLAN_TO_PLAY = 1
@@ -103,12 +106,13 @@ class UserGameStatus(Enum):
     FAVORITE = 10
     STOP_PLAYING = -1
     Choices = (
-        (NOT_PLAYING, 'Not Playing'), 
-        (CURRENTLY_PLAYING, 'Currently Playing'),
-        (FINISHED, 'Finished'),
-        (STOP_PLAYING, 'Stop Playing')
+        (NOT_PLAYING, "Not Playing"),
+        (CURRENTLY_PLAYING, "Currently Playing"),
+        (FINISHED, "Finished"),
+        (STOP_PLAYING, "Stop Playing"),
     )
-    
+
+
 class Platforms(Enum):
     CONSOLE = 1
     ARCADE = 2
@@ -117,14 +121,15 @@ class Platforms(Enum):
     PORTABLE_CONSOLE = 5
     COMPUTER = 6
     Choices = (
-        (CONSOLE, 'Console'), 
-        (ARCADE, 'Arcade'),
-        (PLATFORM, 'Platform'),
-        (OPERATING_SYSTEM, 'Operating System'),
-        (PORTABLE_CONSOLE, 'Portable Console'),
-        (COMPUTER, 'Computer'),
+        (CONSOLE, "Console"),
+        (ARCADE, "Arcade"),
+        (PLATFORM, "Platform"),
+        (OPERATING_SYSTEM, "Operating System"),
+        (PORTABLE_CONSOLE, "Portable Console"),
+        (COMPUTER, "Computer"),
     )
-    
+
+
 class PlatformWebsite(Enum):
     OFFICIAL = 1
     WIKIA = 2
@@ -146,23 +151,23 @@ class PlatformWebsite(Enum):
     PINTREST = 19
     SOUNDCLOUD = 20
     Choices = (
-        (OFFICIAL, 'Official'),
-        (WIKIA, 'Wikia'),
-        (WIKIPEDIA, 'Wikipedia'),
-        (FACEBOOK, 'Facebook'),
-        (TWITTER, 'Twitter'),
-        (TWITCH, 'Twitch'),
-        (INSTAGRAM, 'Instagram'),
-        (YOUTUBE, 'Youtube'),
-        (IPHONE, 'IPhone'),
-        (IPAD, 'IPad'),
-        (ANDROID, 'Android'),
-        (STEAM, 'Steam'),
-        (REDDIT, 'Reddit'),
-        (DISCORD, 'Discord'),
-        (GOOGLE_PLUS, 'Google Plus'),
-        (TUMBLR, 'Tumblr'),
-        (LINKEDIN, 'LinkedIn'),
-        (PINTREST, 'Pintrest'),
-        (SOUNDCLOUD, 'SoundCloud'),
+        (OFFICIAL, "Official"),
+        (WIKIA, "Wikia"),
+        (WIKIPEDIA, "Wikipedia"),
+        (FACEBOOK, "Facebook"),
+        (TWITTER, "Twitter"),
+        (TWITCH, "Twitch"),
+        (INSTAGRAM, "Instagram"),
+        (YOUTUBE, "Youtube"),
+        (IPHONE, "IPhone"),
+        (IPAD, "IPad"),
+        (ANDROID, "Android"),
+        (STEAM, "Steam"),
+        (REDDIT, "Reddit"),
+        (DISCORD, "Discord"),
+        (GOOGLE_PLUS, "Google Plus"),
+        (TUMBLR, "Tumblr"),
+        (LINKEDIN, "LinkedIn"),
+        (PINTREST, "Pintrest"),
+        (SOUNDCLOUD, "SoundCloud"),
     )

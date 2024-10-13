@@ -8,7 +8,5 @@ class PlatformFamily(BaseModel):
     slug = CharField()
 
     class Meta:
-        db_table = 'platform_family'
-        table_description = 'a list of all the video game systems'    
-    
-    
+        db_table = "platform_family"
+        table_description = "a list of all the video game systems"

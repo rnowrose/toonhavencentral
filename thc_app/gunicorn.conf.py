@@ -1,6 +1,6 @@
-bind = '0.0.0.0:8000'
+bind = "0.0.0.0:8000"
 workers = 3
 timeout = 120
-loglevel = 'info'
-accesslog = '-'
-errorlog = '-'
+loglevel = "info"
+accesslog = "-"
+errorlog = "-"

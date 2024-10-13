@@ -4,15 +4,16 @@ from django.db.models import *
 
 
 class AbstractModel(Model):
-    '''
+    """
     Had to split this one out and name it as such because BaseModel was already made and used by many models.
     But we want other models to not have create/modify_date, but still able to use find()
-    '''
+    """
+
     class Meta:
         abstract = True
 
     @classmethod
-    def find(cls, ref, default=None, ignore_refs=['', None]):
+    def find(cls, ref, default=None, ignore_refs=["", None]):
         if ref in ignore_refs:
             return default
 
