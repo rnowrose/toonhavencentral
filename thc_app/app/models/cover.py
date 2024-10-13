@@ -4,8 +4,7 @@ from django.db.models import *
 
 
 class Cover(BaseModel):
-    id = IntegerField(pk=True)
-    game = ForeignKey('Game', related_name='games')
+        game = ForeignKey('Game', related_name='games')
     height = IntegerField()
     image_id = CharField()
     url = CharField()
@@ -15,8 +14,7 @@ class Cover(BaseModel):
     
     
     class Meta:
-        schema = 'games'
-        table = 'screenshot'
+        db_table = 'screenshot'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 

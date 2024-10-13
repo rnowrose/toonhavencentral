@@ -12,7 +12,7 @@ services:
     environment:
         - POSTGRES_HOST=localhost
         - POSTGRES_USER=rownokn
-        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_PASSWORD=InuyashaBleach$1
         - POSTGRES_DB=rownokn
     depends_on:
       - postgres
@@ -29,5 +29,9 @@ services:
       - POSTGRES_USER=rownokn
       - POSTGRES_PASSWORD=InuyashaBleach$1
       - POSTGRES_DB=rownokn  
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
 volumes:
   postgres_data:

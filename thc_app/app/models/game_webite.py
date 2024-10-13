@@ -4,7 +4,6 @@ from django.db.models import *
 
 
 class GameWebsite(BaseModel):
-    id = IntegerField(pk=True)
     trusted = BooleanField()
     url = CharField()
     game = ForeignKey('Game', related_name='franchises')
@@ -13,8 +12,7 @@ class GameWebsite(BaseModel):
 
     
     class Meta:
-        schema = 'games'
-        table = 'game_website'
+        db_table = 'game_website'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 

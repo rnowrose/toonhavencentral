@@ -4,7 +4,6 @@ from django.db.models import *
 
 
 class GamingSession(BaseModel):
-    id = IntegerField(pk=True)
     game = ForeignKey("Game", related_name="sessions")
     user = ForeignKey('User', related_name='sessions')
     session_start = DateTimeField()
@@ -16,8 +15,7 @@ class GamingSession(BaseModel):
     
     
     class Meta:
-        schema = 'games'
-        table = 'gaming_session'
+        db_table = 'gaming_session'
         table_description = 'Keeps Track of User info'    
     
 

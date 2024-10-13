@@ -4,16 +4,14 @@ from django.db.models import *
 
 
 class PlatformWebsite(BaseModel):
-    id = IntegerField(pk=True)
-    trusted = BooleanField()
+        trusted = BooleanField()
     url = CharField()
     category = CharField(max_length=10, choices=PlatformWebsite.Choice)
     
 
     
     class Meta:
-        schema = 'games'
-        table = 'platform_website'
+        db_table = 'platform_website'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 

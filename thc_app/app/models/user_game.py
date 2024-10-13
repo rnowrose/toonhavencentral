@@ -5,14 +5,12 @@ from django.db.models import *
 
 
 class UserGame(BaseModel):
-    id = IntegerField(pk=True)
-    game = ForeignKey('Game', related_name='games')
+        game = ForeignKey('Game', related_name='games')
     user = ForeignKey('User', related_name='franchises')
     status = CharField(choices=UserGameStatus.Choice)
     
     class Meta:
-        schema = 'games'
-        table = 'user_game'
+        db_table = 'user_game'
         table_description = 'Game Interaction with users'    
     
 

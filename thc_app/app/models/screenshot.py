@@ -4,8 +4,7 @@ from django.db.models import *
 
 
 class Screenshot(BaseModel):
-    id = IntegerField(pk=True)
-    game = ForeignKey('Game', related_name='screenshots')
+        game = ForeignKey('Game', related_name='screenshots')
     height = IntegerField()
     image_id = CharField()
     url = CharField()
@@ -15,8 +14,7 @@ class Screenshot(BaseModel):
     
     
     class Meta:
-        schema = 'games'
-        table = 'screenshot'
+        db_table = 'screenshot'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 

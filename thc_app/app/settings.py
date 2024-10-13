@@ -11,10 +11,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+REDIS_PATH = 'redis://localhost:6379/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -29,31 +31,15 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'rownokn',
-        #'USER': 'hungryroot',
-        #'PASSWORD': '$(xx:MV8$q(-T\E~',
-        #'HOST': 'staging-mysql.hrinternal.io',
-        #'HOST': 'qa-mysql.hrinternal.io',
-        'USER': 'rownokn',
-        'PASSWORD': 'InuyashaBleach$1',
-        'HOST': 'localhost',
-        'PORT': '5434',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
-    },
-}
 INSTALLED_APPS = [
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'rest_framework',
 ]
 
@@ -65,9 +51,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
-ROOT_URLCONF = 'thc_app.urls'
+ROOT_URLCONF = 'app.urls'
+
+# Directory to collect all static files for production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Static files settings
+STATIC_URL = '/public/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 
 LOGGING = {
     'version': 1,
@@ -106,11 +100,6 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'color',
         },
-        'tracer': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'tracer'
-        },
     },
     'loggers': {
         # 'django.request': {
@@ -138,16 +127,6 @@ LOGGING = {
             'level': 'WARNING',
             'propagate': False,
         },
-        'segment': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'TRACER': {
-            'handlers': ['tracer'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
     }
 }
 
@@ -167,17 +146,20 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'thc_app.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'toonhavencentral',
+        'USER': 'rownokn',
+        'PASSWORD': 'InuyashaBleach$1',
+        'HOST': 'localhost',
+        'PORT': '5434',
+    },
 }
 
 

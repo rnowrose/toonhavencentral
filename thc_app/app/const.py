@@ -120,9 +120,9 @@ class Platforms(Enum):
         (CONSOLE, 'Console'), 
         (ARCADE, 'Arcade'),
         (PLATFORM, 'Platform'),
-        (OPERATING_SYSTEM, 'Operating System')
-        (PORTABLE_CONSOLE, 'Portable Console')
-        (COMPUTER, 'Computer')
+        (OPERATING_SYSTEM, 'Operating System'),
+        (PORTABLE_CONSOLE, 'Portable Console'),
+        (COMPUTER, 'Computer'),
     )
     
 class PlatformWebsite(Enum):

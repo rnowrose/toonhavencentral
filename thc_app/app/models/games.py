@@ -4,7 +4,6 @@ from django.db.models import *
 
 
 class Game(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField(max_length=255)
     slug = CharField(max_length=128)
     url = CharField(max_length=128)
@@ -36,8 +35,7 @@ class Game(BaseModel):
     total_rating_count = IntegerField()
 
     class Meta:
-        schema = 'games'
-        table = 'game'
+        db_table = 'game'
         table_description = 'Video Games!'    
     
 

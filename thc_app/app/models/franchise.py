@@ -4,14 +4,12 @@ from django.db.models import *
 
 
 class Franchise(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField()
     slug = CharField()
     url = CharField()
     
     class Meta:
-        schema = 'games'
-        table = 'franchise'
+        db_table = 'franchise'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 

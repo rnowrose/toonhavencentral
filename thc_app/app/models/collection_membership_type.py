@@ -4,7 +4,6 @@ from django.db.models import *
 
 
 class CollectionMembershipType(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField(max_length=255)
     description = TextField()
     allowed_collection_type = ForeignKey('CollectionType', related_name='collection_types')
@@ -12,8 +11,7 @@ class CollectionMembershipType(BaseModel):
     
  
     class Meta:
-        schema = 'games'
-        table = 'collection_membership_type'
+        db_table = 'collection_membership_type'
         table_description = 'Game Data'    
     
 

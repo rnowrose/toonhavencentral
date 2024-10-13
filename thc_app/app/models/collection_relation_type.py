@@ -4,15 +4,13 @@ from django.db.models import *
 
 
 class CollectionRelationType(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField(max_length=255)
     description = TextField()
     allowed_child_type = ForeignKey('CollectionType', related_name='parent_collection_types')
     allowed_parent_type = ForeignKey('CollectionType', related_name='child_collection_types')
 
     class Meta:
-        schema = 'games'
-        table = 'collection_relation_type'
+        db_table = 'collection_relation_type'
         table_description = 'Collection Relation Types'    
     
     def __repr__(self):

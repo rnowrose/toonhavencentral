@@ -18,8 +18,7 @@ class UserProfile(BaseModel):
     
     
     class Meta:
-        schema = 'games'
-        table = 'user'
+        db_table = 'user'
         table_description = 'All User Information'
 
     #products: Mapped[list["Product"]] = relationship(back_populates="category")

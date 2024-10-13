@@ -4,7 +4,6 @@ from django.db.models import *
 
 
 class CollectionMembership(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField(max_length=255)
     slug = CharField(max_length=255)
     collection = ForeignKey('Collection', related_name='collections')
@@ -13,8 +12,7 @@ class CollectionMembership(BaseModel):
     url = CharField(max_length=255)
     
     class Meta:
-        schema = 'games'
-        table = 'collection'
+        db_table = 'collection'
         table_description = 'Game Data'    
     
 

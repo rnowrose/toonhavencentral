@@ -4,15 +4,13 @@ from django.db.models import *
 
 
 class Collection(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField(max_length=255)
     slug = CharField(max_length=255)
     type = ForeignKey('CollectionType', related_name='collection_types')
     url = CharField(max_length=255)
     
     class Meta:
-        schema = 'games'
-        table = 'collection'
+        db_table = 'collection'
         table_description = 'Game Data'    
     
 

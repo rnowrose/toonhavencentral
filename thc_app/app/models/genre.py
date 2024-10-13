@@ -3,14 +3,12 @@ from django.db.models import *
 
 
 class Genre(BaseModel):
-    id = IntegerField(pk=True)
     name = CharField()
     slug = CharField()
     url = CharField()
     
     class Meta:
-        schema = 'games'
-        table = 'genre'
+        db_table = 'genre'
         table_description = 'A list of video game franchises such as Star Wars'    
     
 
