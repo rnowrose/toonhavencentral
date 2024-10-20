@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,21 +29,37 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
-INSTALLED_APPS = [
+SHARED_APPS = [
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "jazzmin",
+    "channels",
+    "rest_framework",
+]
+
+TENANT_APPS = [
     "app",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "channels",
-    "rest_framework",
 ]
 
+INSTALLED_APPS = ["django_tenants"] + [app for app in TENANT_APPS if app not in SHARED_APPS] + SHARED_APPS
+
+
+TENANT_MODEL = "app.Client"  # app.Model
+TENANT_DOMAIN_MODEL = "app.Domain"
+TENANT_SUBFOLDER_PREFIX = "clients"
+
+
 MIDDLEWARE = [
+    "django_tenants.middleware.TenantMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -54,14 +70,10 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
+print("MIDDLEWARE:", MIDDLEWARE)
+print("INSTALLED_APPS:", INSTALLED_APPS)
+
 ROOT_URLCONF = "app.urls"
-
-# Directory to collect all static files for production
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# Static files settings
-STATIC_URL = "/public/"
-STATIC_ROOT = os.path.join(BASE_DIR, "public")
 
 LOGGING = {
     "version": 1,
@@ -131,7 +143,7 @@ LOGGING = {
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -146,6 +158,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
+DATABASE_ROUTERS = (
+    "django_tenants.routers.TenantSyncRouter",
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -157,6 +172,7 @@ DATABASES = {
         "PASSWORD": "InuyashaBleach$1",
         "HOST": "localhost",
         "PORT": "5434",
+        "OPTIONS": {"options": "-c search_path=admin,games,public"},
     },
 }
 
@@ -191,13 +207,24 @@ USE_I18N = True
 
 USE_TZ = True
 
+# Admin Settings
+JAZZMIN_SETTINGS = {
+    "site_title": "ToonHavenCentral Admin",
+    "site_header": "ToonHavenCentral",
+    "site_brand": "ToonHavenCentral",
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = "static/"
+# Directory to collect all static files for production
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Static files settings
+STATIC_URL = "/public/"
+STATIC_ROOT = os.path.join(BASE_DIR, "public")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

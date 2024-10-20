@@ -2,12 +2,10 @@ from app.models.base_model import BaseModel
 from django.db.models import *
 
 
-class UserProfile(BaseModel):
+class UserProfile(User, BaseModel):
     user = OneToOneField(
         User, on_delete=CASCADE, primary_key=True, related_name="customer"
     )
-    email = CharField(unique=True)
-    password = CharField()
     profile_name = CharField(unique=True)
     profile_picture = CharField()
     first_name = CharField()

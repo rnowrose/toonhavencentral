@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class GameCategory(Enum):
+class GameCategory:
     MAIN_GAME = 0
     DLC_ADDON = 1
     EXPANSION = 2
@@ -37,7 +37,7 @@ class GameCategory(Enum):
     Map = dict(Choices)
 
 
-class Status(Enum):
+class Status:
     RELEASED = 0
     ALPHA = 2
     BETA = 3
@@ -59,7 +59,7 @@ class Status(Enum):
     Map = dict(Choices)
 
 
-class WebsiteCategory(Enum):
+class WebsiteCategory:
     OFFICIAL = 1
     WIKIA = 2
     WIKIPEDIA = 3
@@ -96,9 +96,10 @@ class WebsiteCategory(Enum):
         (GOG, "GOG"),
         (DISCORD, "Discord"),
     )
+    Map = dict(Choices)
 
 
-class UserGameStatus(Enum):
+class UserGameStatus:
     NOT_PLAYING = 0
     PLAN_TO_PLAY = 1
     CURRENTLY_PLAYING = 2
@@ -111,9 +112,11 @@ class UserGameStatus(Enum):
         (FINISHED, "Finished"),
         (STOP_PLAYING, "Stop Playing"),
     )
+    Map = dict(Choices)
 
 
-class Platforms(Enum):
+class PlatformCategory:
+    NONE = 0
     CONSOLE = 1
     ARCADE = 2
     PLATFORM = 3
@@ -121,6 +124,7 @@ class Platforms(Enum):
     PORTABLE_CONSOLE = 5
     COMPUTER = 6
     Choices = (
+        (NONE, "----"),
         (CONSOLE, "Console"),
         (ARCADE, "Arcade"),
         (PLATFORM, "Platform"),
@@ -128,9 +132,10 @@ class Platforms(Enum):
         (PORTABLE_CONSOLE, "Portable Console"),
         (COMPUTER, "Computer"),
     )
+    Map = dict(Choices)
 
 
-class PlatformWebsite(Enum):
+class PlatformWebsite:
     OFFICIAL = 1
     WIKIA = 2
     WIKIPEDIA = 3
@@ -171,3 +176,4 @@ class PlatformWebsite(Enum):
         (PINTREST, "Pintrest"),
         (SOUNDCLOUD, "SoundCloud"),
     )
+    Map = dict(Choices)

@@ -13,7 +13,7 @@ services:
         - POSTGRES_HOST=localhost
         - POSTGRES_USER=rownokn
         - POSTGRES_PASSWORD=InuyashaBleach$1
-        - POSTGRES_DB=rownokn
+        - POSTGRES_DB=toonhavencentral
     depends_on:
       - postgres
     restart: always
@@ -25,10 +25,12 @@ services:
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d  # Mount the SQL script folder
     environment:
+      - POSTGRES_HOST=localhost
+      - POSTGRES_DB=toonhavencentral
       - POSTGRES_USER=rownokn
       - POSTGRES_PASSWORD=InuyashaBleach$1
-      - POSTGRES_DB=rownokn  
   redis:
     image: redis:alpine
     ports:
