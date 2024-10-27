@@ -2,20 +2,25 @@ from app.models.base_model import BaseModel
 from app.models.games import Game
 from django.db.models import *
 
+from thc_app.app.models.user_profile import UserProfile
+
 
 class GamingSession(BaseModel):
-    game = ForeignKey("Game", related_name="sessions")
-    user = ForeignKey("User", related_name="sessions")
-    session_start = DateTimeField()
-    session_end = DateTimeField()
-    playtime = FloatField()  # in hours
-    progress = TextField(null=True)
-    notes = TextField(null=True)
-    mood = ForeignKey("Mood", related_name="sessions", null=True)
+    user = ForeignKey(UserProfile, on_delete=CASCADE, related_name="gaming_sessions")
+    game_id = IntegerField()
+    start_time = DateTimeField()
+    end_time = DateTimeField()
+    duration = DurationField(null=True, blank=True)
+    level = CharField(max_length=100, null=True, blank=True)
+    notable_events = TextField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if self.start_time and self.end_time:
+            self.duration = self.end_time - self.start_time
+        super().save(*args, **kwargs)
 
     class Meta:
         db_table = "gaming_session"
-        table_description = "Keeps Track of User info"
 
-    def __repr__(self):
-        return f"Genre(id={self.id}, name={self.name}"
+    def __str__(self):
+        return f"{self.user.username} - {self.game.name} - {self.start_time.date()}"

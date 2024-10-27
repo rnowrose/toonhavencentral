@@ -15,7 +15,6 @@ class CollectionRelationType(BaseModel):
 
     class Meta:
         db_table = "collection_relation_type"
-        table_description = "Collection Relation Types"
 
     def __repr__(self):
         return f"User(cid={self.id}, name={self.profile}, email={self.email})"

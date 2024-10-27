@@ -4,13 +4,12 @@ from django.db.models import *
 
 
 class Franchise(BaseModel):
-    name = CharField()
-    slug = CharField()
-    url = CharField()
+    name = CharField(max_length=100)
+    slug = CharField(max_length=100)
+    url = CharField(max_length=100)
 
     class Meta:
         db_table = "franchise"
-        table_description = "A list of video game franchises such as Star Wars"
 
     def __repr__(self):
         return f"Franchise(id={self.id}, name={self.name}"

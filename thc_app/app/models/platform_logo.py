@@ -12,4 +12,3 @@ class PlatformLogo(BaseModel):
 
     class Meta:
         db_table = "platform_logo"
-        table_description = "game system logo images"

@@ -9,7 +9,6 @@ class CollectionType(BaseModel):
 
     class Meta:
         db_table = "collection_type"
-        table_description = "Enums for collection types"
 
     def __repr__(self):
         return f"User(cid={self.id}, name={self.profile}, email={self.email})"

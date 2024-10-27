@@ -39,19 +39,20 @@ SHARED_APPS = [
     "jazzmin",
     "channels",
     "rest_framework",
+    "app"
 ]
 
 TENANT_APPS = [
-    "app",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "app",
 ]
 
 INSTALLED_APPS = ["django_tenants"] + [app for app in TENANT_APPS if app not in SHARED_APPS] + SHARED_APPS
-
+print(TENANT_APPS)
 
 TENANT_MODEL = "app.Client"  # app.Model
 TENANT_DOMAIN_MODEL = "app.Domain"
@@ -69,9 +70,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
-
-print("MIDDLEWARE:", MIDDLEWARE)
-print("INSTALLED_APPS:", INSTALLED_APPS)
 
 ROOT_URLCONF = "app.urls"
 
@@ -138,6 +136,11 @@ LOGGING = {
             "propagate": False,
         },
     },
+    "django_tenants": {
+        "handlers": ["console"],
+        "level": "DEBUG",
+        "propagate": True,
+    },
 }
 
 TEMPLATES = [
@@ -166,13 +169,13 @@ DATABASE_ROUTERS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django_tenants.postgresql_backend",
         "NAME": "toonhavencentral",
         "USER": "rownokn",
         "PASSWORD": "InuyashaBleach$1",
         "HOST": "localhost",
         "PORT": "5434",
-        "OPTIONS": {"options": "-c search_path=admin,games,public"},
+        #"OPTIONS": {"options": "-c search_path=admin,games,public,"},
     },
 }
 

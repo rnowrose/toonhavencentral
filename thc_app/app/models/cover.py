@@ -14,8 +14,7 @@ class Cover(BaseModel):
     
     
     class Meta:
-        db_table = 'screenshot'
-        table_description = 'A list of video game franchises such as Star Wars'    
+        db_table = 'cover'
     
 
     def __repr__(self):

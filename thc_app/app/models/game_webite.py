@@ -11,7 +11,6 @@ class GameWebsite(BaseModel):
 
     class Meta:
         db_table = "game_website"
-        table_description = "A list of video game franchises such as Star Wars"
 
     def __repr__(self):
         return f"Genre(id={self.id}, name={self.name}"

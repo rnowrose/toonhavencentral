@@ -177,3 +177,10 @@ class PlatformWebsite:
         (SOUNDCLOUD, "SoundCloud"),
     )
     Map = dict(Choices)
+
+class Moods:
+    Map = {
+        "H": "Happy",  # the old spoon
+        "F": "Relaxed",  # the new spoon
+        "R": "Frustrated",
+    }

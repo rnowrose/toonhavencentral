@@ -9,18 +9,16 @@ class Game(BaseModel):
     url = CharField(max_length=128)
     summary = TextField()
     storyline = TextField()
-    collection = ForeignKey("Collection", related_name="collections")
+    collection = ForeignKey("Collection", on_delete=CASCADE, related_name="collections")
     collections = JSONField()
-    bundles = JSONField()
-    franchise = ForeignKey("Franchise", related_name="franchises")
+    franchise = ForeignKey("Franchise", on_delete=CASCADE, related_name="franchises")
     franchises = JSONField()
-    bundles = JSONField()
     aggregated_rating = DecimalField(decimal_places=2)
     aggregated_rating_count = IntegerField()
     bundles = JSONField()
     status = CharField(max_length=10, choices=Status.Choices)
     category = CharField(max_length=10, choices=GameCategory.Choices)
-    cover = ForeignKey("Cover", related_name="cover")
+    cover = ForeignKey("Cover", on_delete=CASCADE, related_name="cover")
     dlcs = JSONField()
     hypes = IntegerField()
     ports = JSONField()
@@ -30,13 +28,12 @@ class Game(BaseModel):
     remaster = JSONField()
     similar_games = JSONField()
     standalone_expansions = JSONField()
-    version_parent = ForeignKey("Game", related_name="parent_game")
+    version_parent = ForeignKey("Game", on_delete=CASCADE, related_name="parent_game")
     total_rating = DecimalField(decimal_places=2)
     total_rating_count = IntegerField()
 
     class Meta:
         db_table = "game"
-        table_description = "Video Games!"
 
     def __repr__(self):
         return f"Game(id={self.id}, name={self.name}"

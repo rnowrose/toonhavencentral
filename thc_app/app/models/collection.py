@@ -11,7 +11,6 @@ class Collection(BaseModel):
 
     class Meta:
         db_table = "collection"
-        table_description = "Game Data"
 
     def __repr__(self):
         return f"User(cid={self.id}, name={self.profile}, email={self.email})"
