@@ -30,8 +30,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-SHARED_APPS = [
+INSTALLED_APPS = [
     "django.contrib.auth",
+    "django.contrib.admin",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -39,28 +40,11 @@ SHARED_APPS = [
     "jazzmin",
     "channels",
     "rest_framework",
-    "app"
-]
-
-TENANT_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
     "app",
 ]
 
-INSTALLED_APPS = ["django_tenants"] + [app for app in TENANT_APPS if app not in SHARED_APPS] + SHARED_APPS
-print(TENANT_APPS)
-
-TENANT_MODEL = "app.Client"  # app.Model
-TENANT_DOMAIN_MODEL = "app.Domain"
-TENANT_SUBFOLDER_PREFIX = "clients"
-
 
 MIDDLEWARE = [
-    "django_tenants.middleware.TenantMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -136,11 +120,6 @@ LOGGING = {
             "propagate": False,
         },
     },
-    "django_tenants": {
-        "handlers": ["console"],
-        "level": "DEBUG",
-        "propagate": True,
-    },
 }
 
 TEMPLATES = [
@@ -161,24 +140,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
-DATABASE_ROUTERS = (
-    "django_tenants.routers.TenantSyncRouter",
-)
+# DATABASE_ROUTERS = (
+#    "django_tenants.routers.TenantSyncRouter",
+# )
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
     "default": {
-        "ENGINE": "django_tenants.postgresql_backend",
+        "ENGINE": "django.db.backends.postgresql",
         "NAME": "toonhavencentral",
         "USER": "rownokn",
         "PASSWORD": "InuyashaBleach$1",
         "HOST": "localhost",
         "PORT": "5434",
-        #"OPTIONS": {"options": "-c search_path=admin,games,public,"},
+        # "OPTIONS": {"options": "-c search_path=admin,games,public,"},
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

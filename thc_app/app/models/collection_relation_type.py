@@ -7,10 +7,10 @@ class CollectionRelationType(BaseModel):
     name = CharField(max_length=255)
     description = TextField()
     allowed_child_type = ForeignKey(
-        "CollectionType", related_name="parent_collection_types"
+        "CollectionType", related_name="parent_collection_types", on_delete=CASCADE
     )
     allowed_parent_type = ForeignKey(
-        "CollectionType", related_name="child_collection_types"
+        "CollectionType", related_name="child_collection_types", on_delete=CASCADE
     )
 
     class Meta:

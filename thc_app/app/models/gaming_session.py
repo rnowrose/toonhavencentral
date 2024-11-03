@@ -1,8 +1,6 @@
 from app.models.base_model import BaseModel
-from app.models.games import Game
+from app.models.user_profile import UserProfile
 from django.db.models import *
-
-from thc_app.app.models.user_profile import UserProfile
 
 
 class GamingSession(BaseModel):
@@ -20,7 +18,7 @@ class GamingSession(BaseModel):
         super().save(*args, **kwargs)
 
     class Meta:
-        db_table = "gaming_session"
+        db_table = 'gaming_session'
 
     def __str__(self):
         return f"{self.user.username} - {self.game.name} - {self.start_time.date()}"

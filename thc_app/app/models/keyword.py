@@ -6,7 +6,7 @@ class Keyword(BaseModel):
     name = CharField()
     slug = CharField()
     url = CharField()
-    game = ForeignKey("Game", related_name="screenshots")
+    game = ForeignKey("Game", related_name="keywords")
 
     class Meta:
         db_table = "keyword"

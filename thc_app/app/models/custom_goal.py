@@ -1,7 +1,6 @@
+from app.models.base_model import BaseModel
+from app.models.user_profile import UserProfile
 from django.db.models import *
-
-from thc_app.app.models.base_model import BaseModel
-from thc_app.app.models.user_profile import UserProfile
 
 
 class CustomGoal(BaseModel):
@@ -11,9 +10,9 @@ class CustomGoal(BaseModel):
     is_completed = BooleanField(default=False)
     target_date = DateField(null=True, blank=True)
     completion_date = DateField(null=True, blank=True)
-    
+
     class Meta:
-        db_table='custom_goal'
+        db_table = 'custom_goal'
 
     def __str__(self):
         return f"Goal: {self.goal_description} - {self.user.username}"

@@ -7,12 +7,11 @@ class CollectionMembershipType(BaseModel):
     name = CharField(max_length=255)
     description = TextField()
     allowed_collection_type = ForeignKey(
-        "CollectionType", related_name="collection_types"
+        "CollectionType", on_delete=CASCADE, related_name="allowed_collection_types"
     )
 
     class Meta:
         db_table = "collection_membership_type"
-        table_description = "Game Data"
 
     def __repr__(self):
         return f"User(cid={self.id}, name={self.profile}, email={self.email})"

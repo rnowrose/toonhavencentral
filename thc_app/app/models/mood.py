@@ -1,12 +1,11 @@
 from app.models.base_model import BaseModel
+from app.models.gaming_session import GamingSession
+from app.models.user_profile import UserProfile
 from django.db.models import *
-
-from thc_app.app.models.gaming_session import GamingSession
-from thc_app.app.models.user_profile import UserProfile
 
 
 class Mood(BaseModel):
-    user = ForeignKey(UserProfile, on_delete=CASCADE, related_name='moods')
+    user = ForeignKey(UserProfile, on_delete=CASCADE, related_name="moods")
     session = ForeignKey(GamingSession, on_delete=CASCADE, null=True, blank=True)
     game_id = IntegerField()
     mood_before = CharField(max_length=50)
@@ -15,10 +14,10 @@ class Mood(BaseModel):
     date_logged = DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = "mood"
+        db_table = 'mood'
 
     def __repr__(self):
         return f"Mood(id={self.id}, name={self.name}"
-    
+
     def __str__(self):
         return f"Mood for {self.user.username} - {self.game.name if self.game else 'General'}"
