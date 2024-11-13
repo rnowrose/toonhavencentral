@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class UserProfile(BaseModel):
-    user_id = IntegerField()
+    user = OneToOneField(User, on_delete=CASCADE, related_name="users", null=True)
     profile_name = CharField(max_length=255, unique=True)
     profile_picture = CharField(max_length=255)
     bio = TextField(null=True)

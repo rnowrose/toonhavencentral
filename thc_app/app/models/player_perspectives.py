@@ -1,7 +1,7 @@
 from app.models.base_model import BaseModel
 from django.db.models import *
 
-class PlayerPerspectives:
+class PlayerPerspectives(BaseModel):
     name = CharField(max_length=200)
     slug = CharField(max_length=200)
     url = CharField(max_length=200)

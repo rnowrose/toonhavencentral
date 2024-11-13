@@ -15,10 +15,23 @@ from .platform import Platform
 from .genre import Genre
 from .franchise import Franchise
 from .platform_logo import PlatformLogo
+from .games import Game
+from .cover import Cover
+from .screenshot import Screenshot
+from .player_perspectives import PlayerPerspectives
+from .game_webite import GameWebsite
+from .game_video import GameVideo
 
-# from .games import Game
-# from .cover import Cover
-# from .screenshot import Screenshot
+from .achievement import Achievement
+
+from .artwork import Artwork
+from .keyword import Keyword
+from .theme import Theme
+from .platform_logo import PlatformLogo
+from .platform_family import PlatformFamily
+from .release_date import ReleaseDate
+from .release_date_status import ReleaseDateStatus
+
 
 # from .collection_membership import CollectionMembership
 # from .collection_membership_type import CollectionMembershipType

@@ -16,7 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-REDIS_PATH = "redis://localhost:6379/"
+REDIS_PATH = "redis://172.24.0.2:6379/"
+REDIS_HOST = "redis"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -27,24 +28,57 @@ SECRET_KEY = "django-insecure-p(%7gzxmm+6t8to-@yvs^lao(c)wiqs4x@nz(804a(3s-bk10u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_CACHE_ALIAS = "default"
+
+# Database
+# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "toonhavencentral",
+        "USER": "rownokn",
+        "PASSWORD": "InuyashaBleach$1",
+        # "HOST": "postgres",
+        # "PORT": "5432",
+        "HOST": "localhost",
+        "PORT": "5434",
+        # "OPTIONS": {"options": "-c search_path=admin,games,public,"},
+    },
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_PATH,  # Redis server URL (port 6379) and DB index (1)
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "thcapp",  # Prefix for keys to avoid conflicts
+    }
+}
+
 
 # Application definition
 INSTALLED_APPS = [
+    "jazzmin",
+    "rest_framework",
     "django.contrib.auth",
     "django.contrib.admin",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "jazzmin",
     "channels",
-    "rest_framework",
+    "corsheaders",
     "app",
 ]
 
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -56,6 +90,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = "app.urls"
+CORS_ORIGIN_ALLOW_ALL = True
 
 LOGGING = {
     "version": 1,
@@ -144,19 +179,6 @@ WSGI_APPLICATION = "app.wsgi.application"
 #    "django_tenants.routers.TenantSyncRouter",
 # )
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "toonhavencentral",
-        "USER": "rownokn",
-        "PASSWORD": "InuyashaBleach$1",
-        "HOST": "localhost",
-        "PORT": "5434",
-        # "OPTIONS": {"options": "-c search_path=admin,games,public,"},
-    },
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -176,7 +198,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_URL = "/?login=true"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_URL = "/logout/"
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 

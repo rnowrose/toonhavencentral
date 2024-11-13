@@ -1,13 +1,16 @@
 from app.models.base_model import BaseModel
 from app.models.gaming_session import GamingSession
 from app.models.user_profile import UserProfile
+from app.models.games import Game
 from django.db.models import *
+
+from app.models.games import Game
 
 
 class Mood(BaseModel):
     user = ForeignKey(UserProfile, on_delete=CASCADE, related_name="moods")
     session = ForeignKey(GamingSession, on_delete=CASCADE, null=True, blank=True)
-    game_id = IntegerField()
+    game = ForeignKey(Game, on_delete=CASCADE, related_name="moods", null=True)
     mood_before = CharField(max_length=50)
     mood_after = CharField(max_length=50)
     custom_mood = CharField(max_length=50, null=True, blank=True)

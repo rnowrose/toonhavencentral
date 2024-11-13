@@ -178,6 +178,54 @@ class PlatformWebsite:
     )
     Map = dict(Choices)
 
+class ReleaseDateCategory:
+    YYYYMMMMDD = 0;
+    YYYYMMMM = 1
+    YYYY = 2
+    YYYYQ1 = 3
+    YYYYQ2 = 4
+    YYYYQ3 = 5
+    YYYYQ4 = 6
+    TBD = 7
+    Choices = (
+        (YYYYMMMMDD, "YYYYMMMMDD"),
+        (YYYYMMMM, "YYYYMMMM"),
+        (YYYY, "YYYY"),
+        (YYYYQ1, "YYYYQ1"),
+        (YYYYQ2, "YYYYQ2"),
+        (YYYYQ3, "YYYYQ3"),
+        (YYYYQ4, "YYYYQ4"),
+        (TBD, "TBD"),
+    )
+    Map = dict(Choices)
+
+
+class Region:
+    EUROPE = 1
+    NORTH_AMERICA = 2
+    AUSTRAILIA = 3
+    NEW_ZEALAND = 4
+    JAPAN = 5
+    CHINA = 6
+    ASIA = 7
+    WORLDWIDE = 8
+    KOREA = 9
+    BRAZIL = 10
+    Choices = (
+        (EUROPE, "Europe"),
+        (NORTH_AMERICA, "North America"),
+        (AUSTRAILIA, "Austrailia"),
+        (NEW_ZEALAND, "New Zealand"),
+        (JAPAN, "Japan"),
+        (CHINA, "China"),
+        (ASIA, "Asia"),
+        (WORLDWIDE, "WorldWide"),
+        (KOREA, "Korea"),
+        (BRAZIL, "Brazil"),
+    )
+    Map = dict(Choices)
+
+
 class Moods:
     Map = {
         "H": "Happy",  # the old spoon

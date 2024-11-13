@@ -9,6 +9,8 @@ services:
       - ./app:/app
     ports:
       - "8000:8000"
+    networks:
+      - django_network
     environment:
         - POSTGRES_HOST=localhost
         - POSTGRES_USER=rownokn
@@ -23,6 +25,8 @@ services:
     ports:
       - 5434:5432
     restart: always
+    networks:
+      - django_network
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d  # Mount the SQL script folder
@@ -35,5 +39,10 @@ services:
     image: redis:alpine
     ports:
       - "6379:6379"
+    networks:
+      - django_network
 volumes:
   postgres_data:
+networks:
+  django_network:
+    driver: bridge

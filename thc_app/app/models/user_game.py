@@ -4,8 +4,8 @@ from django.db.models import *
 
 
 class UserGame(BaseModel):
-    game_id = SmallIntegerField()
-    user_profile = ForeignKey("UserProfile", related_name="game_users", on_delete=CASCADE)
+    game = ForeignKey("Game", on_delete=CASCADE, related_name="user_games", null=True)
+    user_profile = ForeignKey("UserProfile", related_name="user_games", on_delete=CASCADE)
     status = SmallIntegerField(choices=UserGameStatus.Choices)
 
     class Meta:
