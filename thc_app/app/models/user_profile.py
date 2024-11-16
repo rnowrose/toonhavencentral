@@ -17,3 +17,6 @@ class UserProfile(BaseModel):
 
     def __repr__(self):
         return f"User(cid={self.user_id}, name={self.profile_name})"
+
+    def auth(self):
+        if self.user.username

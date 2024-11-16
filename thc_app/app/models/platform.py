@@ -12,8 +12,8 @@ class Platform(BaseModel):
     )
     generation = IntegerField()
     slug = CharField(max_length=255)
-    summary = TextField()
-    url = CharField(max_length=255)
+    summary = TextField(null=True)
+    url = CharField(max_length=255, null=True)
 
     class Meta:
         db_table = 'platform'
