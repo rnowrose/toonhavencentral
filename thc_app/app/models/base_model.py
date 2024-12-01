@@ -33,7 +33,7 @@ class AbstractModel(Model):
 class BaseModel(AbstractModel):
     created_at = DateTimeField(auto_now_add=True)
     updated_at = DateTimeField(auto_now=True)
-    checksum = UUIDField()
+    checksum = UUIDField(null=True)
 
     class Meta:
         abstract = True

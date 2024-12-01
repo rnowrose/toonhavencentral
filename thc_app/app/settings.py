@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from datetime import timedelta
 import os
 from pathlib import Path
 
@@ -64,6 +65,7 @@ CACHES = {
 # Application definition
 INSTALLED_APPS = [
     "jazzmin",
+    "ninja_jwt",
     "rest_framework",
     "django.contrib.auth",
     "django.contrib.admin",
@@ -76,7 +78,6 @@ INSTALLED_APPS = [
     "app",
 ]
 
-
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -87,7 +88,20 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "app.middleware.LogJWTMiddleware",
 ]
+
+NINJA_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),  # Token lifespan
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": "HS256",  # Default algorithm
+    "SIGNING_KEY": SECRET_KEY,  # Default signing key
+    "AUTH_HEADER_TYPES": ("Bearer",),  # Token prefix
+    "USER_ID_FIELD": "id",
+    "USER_ID_CLAIM": "user_id",
+}
 
 ROOT_URLCONF = "app.urls"
 CORS_ORIGIN_ALLOW_ALL = True
@@ -198,9 +212,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_URL = "/?login=true"
+LOGIN_URL = "/api/login"
 LOGIN_REDIRECT_URL = "/"
-LOGOUT_URL = "/logout/"
+LOGOUT_URL = "/api/logout"
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 

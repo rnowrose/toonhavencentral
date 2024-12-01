@@ -8,3 +8,10 @@ class UnsupportedType(AppException):
 
 class GameException(Exception):
     pass
+
+
+class UserAlreadyExists(AppException):
+    pass
+
+class InvalidUserEmail(AppException):
+    pass

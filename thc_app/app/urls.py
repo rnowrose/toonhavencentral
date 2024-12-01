@@ -16,13 +16,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path, re_path
-from app.views import api
+from app.views import ninja_api
 
-test_urls = [
-    path("auth_user/", api.example_test),
-]
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("test/", include(test_urls)),
+    path("api/", ninja_api.urls),
 ]
